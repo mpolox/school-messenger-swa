@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          This is my first SWA appication test
+          This is my first SWA appication test !!
         </p>
       </header>
     </div>
