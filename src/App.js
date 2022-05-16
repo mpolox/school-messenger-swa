@@ -1,9 +1,7 @@
 // import ReactECharts from "echarts-for-react";
 import { AppRouter } from "./routers/AppRouter";
 
-
 function App() {
-
   return (
     <AppRouter/>
   );

@@ -4,7 +4,7 @@ export const SearchScreen = () => {
   return (
     <Fragment>
         <h1>
-        Search Screen
+          Search Screen
         </h1>          
     </Fragment>   
   )

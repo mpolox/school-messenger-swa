@@ -4,7 +4,7 @@ export const TeacherScreen = () => {
   return (
     <Fragment>
         <h1>
-        Teacher Screen
+          Teacher Screen
         </h1>          
     </Fragment>   
   )
