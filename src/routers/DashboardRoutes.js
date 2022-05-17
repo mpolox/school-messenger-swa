@@ -4,12 +4,13 @@ import { DashboardScreen } from '../components/dashboard/DashboardScreen'
 import { SearchScreen } from '../components/search/SearchScreen'
 import { StudentScreen } from '../components/students/StudentScreen'
 import { TeacherScreen } from '../components/teachers/TeacherScreen'
-import { Navbar } from '../components/ui/Navbar'
+import { Sidebar } from '../components/ui/Sidebar'
 
 export const DashboardRoutes = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+      <Sidebar />
       <Routes>
         <Route path="teacher" element={<TeacherScreen />} />
         <Route path="student" element={<StudentScreen />} />
