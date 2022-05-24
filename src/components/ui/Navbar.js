@@ -1,5 +1,6 @@
 import { Spinner } from 'react-bootstrap';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import "../../Styles/App.css";
 
 export const Navbar = () => {
 
