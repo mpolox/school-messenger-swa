@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import "../../Styles/App.css"
 
 export const DashboardScreen = () => {
   return (
-    <div className="container-fluid mt-2">
+    <div className="home">
       <Card>
         <Card.Header>Dashboard</Card.Header>
         <Card.Body>

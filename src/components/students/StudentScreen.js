@@ -3,11 +3,12 @@ import { Spinner } from 'react-bootstrap'
 
 export const StudentScreen = () => {
   return (
-    <Fragment>
+    <div className="home">
         <h1>
         Student Screen
         </h1>
         <Spinner animation="border" variant="danger" />
-    </Fragment>   
+    </div>
+
   )
 }

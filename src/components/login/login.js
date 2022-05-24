@@ -10,10 +10,8 @@ export const LoginScreen = () => {
     console.log("Entrar")
   }
 
-  return (
-
-    
-    <div className='container mt-5'>
+  return (    
+    <div className="home">
     <Card>
       <Card.Header>Login</Card.Header>
       <Card.Body>
