@@ -19,22 +19,22 @@ export const NavbarMenu = () => {
         <Navbar.Collapse id="navbarScroll">
           <Nav>
             <Nav.Link eventKey="1" as={Link} to="/">
-              Home
+              Inicio
             </Nav.Link>
             <Nav.Link eventKey="2" as={Link} to="/student">
-              Student
+              Alumno
             </Nav.Link>
             <Nav.Link eventKey="3" as={Link} to="/teacher">
-              Teacher
+              Maestro
             </Nav.Link>
             <Nav.Link eventKey="4" as={Link} to="/search">
-              Search
+              Buscar
             </Nav.Link>
             <Nav.Link
               className="nav-item nav-link"
               to="/login"
               onClick={handleLogout}>
-              Logout
+              Salir
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
