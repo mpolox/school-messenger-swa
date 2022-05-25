@@ -10,7 +10,7 @@ export const DashboardRoutes = () => {
   return (
     <>
       {/* <Sidebar /> */}
-      <NavbarMenu/>
+      <NavbarMenu/>      
       <Routes>
         <Route path="teacher" element={<TeacherScreen />} />
         <Route path="student" element={<StudentScreen />} />

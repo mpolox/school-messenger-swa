@@ -12,7 +12,7 @@ export const NavbarMenu = () => {
   };
 
   return (
-    <Navbar collapseOnSelect  bg="dark" variant="dark" expand="lg">
+    <Navbar sticky="top" collapseOnSelect  bg="dark" variant="dark" expand="lg">
       <Container fluid>
         <Navbar.Brand href="#">School Messenger</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
