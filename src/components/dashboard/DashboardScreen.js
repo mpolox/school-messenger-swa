@@ -28,9 +28,10 @@ export const DashboardScreen = () => {
     },
     series: [
       {
+        name: "Calificación:",
         color: "#CE1D1D",
         symbolSize: 20,
-        data: [15, 18, 10, 8],
+        data: [15, 18, 7, 8],
         type: "line",
         smooth: true,
         lineStyle: { color: "#CE1D1D" },
@@ -43,21 +44,31 @@ export const DashboardScreen = () => {
   };
 
   const option2 = {
+    tooltip: {
+      trigger: "item",
+    },    
     xAxis: {
       type: "category",
-      data: ["1", "2", "3", "4"],
+      data: ["1er Parcial", "2o Parcial", "3er Parcial", "4o Parcial"],
     },
     yAxis: {
       type: "value",
     },
     series: [
       {
-        data: [25, 20, 10, 15],
+        symbol: "circle",
+        symbolSize: 20,
+        color: "#146356",
+        name: "Calificación:",
+        data: [25, 25, 20, 25],
         type: "line",
         smooth: true,
-        areaStyle: {
-          shadowColor: "rgba(0, 0, 0, 0.5)",
-          shadowBlur: 22,
+        lineStyle: { 
+          color: "#446A46",
+          width: 5
+        },
+        areaStyle: {          
+          color: "#14C38E"
         },
       },
     ],
@@ -68,14 +79,11 @@ export const DashboardScreen = () => {
       trigger: "item",
     },
     legend: {
-      bottom: '5%',
-      orient: 'vertical',
-      left: "1%",
-      top: "1%"
+      bottom: '5%'
     },   
     series: [
       {
-        name: "Access From",
+        name: "Materia:",
         type: "pie",
         radius: ["40%", "70%"],
         avoidLabelOverlap: false,
