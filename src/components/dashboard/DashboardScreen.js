@@ -63,10 +63,16 @@ export const DashboardScreen = () => {
     ],
   };
   const option = {
-    backgroundColor: "#2c343c",
+    // backgroundColor: "#2c343c",
     tooltip: {
       trigger: "item",
     },
+    legend: {
+      bottom: '5%',
+      orient: 'vertical',
+      left: "1%",
+      top: "1%"
+    },   
     series: [
       {
         name: "Access From",
@@ -75,7 +81,7 @@ export const DashboardScreen = () => {
         avoidLabelOverlap: false,
         itemStyle: {
           borderRadius: 5,
-          borderColor: "#2c343c",
+          borderColor: "#F0F0F0",
           borderWidth: 1,
         },
         label: {
@@ -93,11 +99,11 @@ export const DashboardScreen = () => {
           show: false,
         },
         data: [
-          { value: 1048, name: "Search Engine" },
-          { value: 735, name: "Direct" },
-          { value: 580, name: "Email" },
-          { value: 484, name: "Union Ads" },
-          { value: 300, name: "Video Ads" },
+          { value: 1048, name: "Mate I" },
+          { value: 735, name: "TLR II" },
+          { value: 580, name: "Física" },
+          { value: 484, name: "Artes" },
+          { value: 300, name: "Civismo" },
         ],
       },
     ],
