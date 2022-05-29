@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Accordion, Card, Container, Spinner } from "react-bootstrap";
+import React  from "react";
+import { Accordion, Card, Container } from "react-bootstrap";
 import ReactECharts from "echarts-for-react";
 
 export const StudentScreen = () => {
@@ -69,21 +69,17 @@ export const StudentScreen = () => {
         <Accordion>
           <Accordion.Item eventKey="0">
             <Accordion.Header>Matemáticas</Accordion.Header>
-            <Accordion.Body style={{ height: "28rem" }}>
-                  <ReactECharts style={{ height: "100%" }} option={option2} />
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="1">
-            <Accordion.Header>TLR II</Accordion.Header>
             <Accordion.Body>
-              <Card style={{ height: "28rem" }}>
-                <Card.Header>Dashboard2</Card.Header>
-                <Card.Body>
-                  <ReactECharts style={{ height: "100%" }} option={option3} />
-                </Card.Body>
+            <Card style={{ height: "28rem" }}>
+              <Card.Body>
+              <ReactECharts option={option2} />
+              </Card.Body>
+              
               </Card>
+
             </Accordion.Body>
           </Accordion.Item>
+
         </Accordion>
       </Container>
     </div>

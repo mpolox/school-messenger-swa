@@ -2,24 +2,16 @@ import React, { useEffect, useState } from "react";
 import {
   Button,
   Card,
-  Col,
   Container,
-  Row,
   Spinner,
-  Stack,
 } from "react-bootstrap";
 import "../../Styles/App.css";
 import ReactECharts from "echarts-for-react";
 
 export const DashboardScreen = () => {
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
   const [data, setData] = useState("");
   const getDashboardData = async () => {
-    const url =
-      "https://eu2apisisdev01.azurewebsites.net/api/operation/GetResumen";
+    const url = "https://eu2apisisdev01.azurewebsites.net/api/operation/GetResumen";
     const response = await fetch(url);
     const resp = await response.json();
     setData(resp.data);
@@ -133,18 +125,17 @@ export const DashboardScreen = () => {
 
   const showContainer = () => {
     if (data) {
-      console.log("Muestra dashboard");
       return (
         <Container>
           <br />
-          <Card>
-            <Card.Header>Resumen</Card.Header>
+          <Card bg="success" text="white">
+            <Card.Header>{data.alumno.nombre}</Card.Header>
             <Card.Body>
               <Card.Title>
                 {data.alumno.nombre} {data.alumno.apellidos}
               </Card.Title>
               <Card.Text>
-                Matricula:{data.alumno.matricula} <br />
+                Matricula: {data.alumno.matricula} <br />
                 {data.descripcion} <br />
                 {data.alumno.nota} <br />
                 Cursando {data.materias.length} materias
@@ -167,14 +158,14 @@ export const DashboardScreen = () => {
             </Card.Body>
           </Card>
           <br />
-          <Card style={{ height: "28rem" }}>
+          <Card style={{ height: "28rem" }} border="danger">
             <Card.Header>Dashboard2</Card.Header>
             <Card.Body>
               <ReactECharts style={{ height: "100%" }} option={option3} />
             </Card.Body>
           </Card>
           <br />
-          <Card>
+          <Card >
             <Card.Header>Dashboard2</Card.Header>
             <Card.Body>
               <Card.Title>Card Title</Card.Title>

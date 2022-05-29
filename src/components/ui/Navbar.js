@@ -14,7 +14,7 @@ export const NavbarMenu = () => {
   return (
     <Navbar sticky="top" collapseOnSelect  bg="dark" variant="dark" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#">School Messenger</Navbar.Brand>
+        <Navbar.Brand href="#">Resumen escolar</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav>
