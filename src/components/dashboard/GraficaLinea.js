@@ -43,7 +43,7 @@ export const GraficaLinea = ({cals, promedio}) => {
 
   return (
     <>
-      <ReactECharts style={{ height: "80%" }} option={option} />
+      <ReactECharts style={{ height: "70%" }} option={option} />
     </>    
   )
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Accordion } from "react-bootstrap";
+import { Accordion, ListGroup } from "react-bootstrap";
 import { GraficaLinea } from "./GraficaLinea";
 
 export const AcordeonItem = ({data}) => {
@@ -12,15 +12,21 @@ export const AcordeonItem = ({data}) => {
     promedio = promedio + item.calificacion;
   });
   promedio = promedio / 4;
+  let variante= "success";
+  if (promedio < 70) variante = "warning";
+  if (promedio < 50) variante = "danger";
   return (
     <Accordion.Item eventKey={data.id}>
       <Accordion.Header>{data.nombre}</Accordion.Header>
-      <Accordion.Body border="danger" style={{ height: "35rem" }}>
-        Materia: {data.nombre}<br/>
-        Creditos: {data.creditos}<br/>
-        Maestro: {data.nombreMaestro}<br/>
-        Parciales: {data.parciales.length}<br/>
-        Promedio: {promedio}<br/>
+      <Accordion.Body style={{ height: "35rem" }}>
+        <ListGroup>
+          <ListGroup.Item>Materia: {data.nombre}</ListGroup.Item>
+          <ListGroup.Item>Creditos: {data.creditos}</ListGroup.Item>
+          <ListGroup.Item>Maestro: {data.nombreMaestro}</ListGroup.Item>
+          <ListGroup.Item>Parciales: {data.parciales.length}</ListGroup.Item>
+          <ListGroup.Item variant={variante}>Promedio: {promedio}</ListGroup.Item>
+
+        </ListGroup>
         <GraficaLinea cals={cals} promedio={promedio}/>
         <br/>
       </Accordion.Body>
