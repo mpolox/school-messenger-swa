@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import {
-  Button,
-  Card,
   Container,
   Spinner,
 } from "react-bootstrap";
 import "../../Styles/App.css";
-import ReactECharts from "echarts-for-react";
+import { Acordeon } from "./Acordeon";
+import { Resumen } from "./Resumen";
 
 export const DashboardScreen = () => {
   const [data, setData] = useState("");
   const getDashboardData = async () => {
     const url = "https://eu2apisisdev01.azurewebsites.net/api/operation/GetResumen";
     const response = await fetch(url);
-    const resp = await response.json();
+    const resp = await response.json();;
     setData(resp.data);
   };
 
@@ -127,56 +126,8 @@ export const DashboardScreen = () => {
     if (data) {
       return (
         <Container>
-          <br />
-          <Card bg="success" text="white">
-            <Card.Header>{data.alumno.nombre}</Card.Header>
-            <Card.Body>
-              <Card.Title>
-                {data.alumno.nombre} {data.alumno.apellidos}
-              </Card.Title>
-              <Card.Text>
-                Matricula: {data.alumno.matricula} <br />
-                {data.descripcion} <br />
-                {data.alumno.nota} <br />
-                Cursando {data.materias.length} materias
-              </Card.Text>
-            </Card.Body>
-          </Card>
-          <br />
-
-          <Card style={{ height: "28rem" }}>
-            <Card.Header>Creditos segun materia</Card.Header>
-            <Card.Body>
-              <ReactECharts style={{ height: "100%" }} option={option} />
-            </Card.Body>
-          </Card>
-          <br />
-          <Card style={{ height: "28rem" }}>
-            <Card.Header>Dashboard2</Card.Header>
-            <Card.Body>
-              <ReactECharts style={{ height: "100%" }} option={option2} />
-            </Card.Body>
-          </Card>
-          <br />
-          <Card style={{ height: "28rem" }} border="danger">
-            <Card.Header>Dashboard2</Card.Header>
-            <Card.Body>
-              <ReactECharts style={{ height: "100%" }} option={option3} />
-            </Card.Body>
-          </Card>
-          <br />
-          <Card >
-            <Card.Header>Dashboard2</Card.Header>
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content..
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-          <br />
+          <Resumen data={data} />
+          <Acordeon data={data} />
         </Container>
       );
     }
