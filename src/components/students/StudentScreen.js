@@ -69,13 +69,8 @@ export const StudentScreen = () => {
         <Accordion>
           <Accordion.Item eventKey="0">
             <Accordion.Header>Matemáticas</Accordion.Header>
-            <Accordion.Body>
-              <Card style={{ height: "28rem" }}>
-                <Card.Header>Dashboard2</Card.Header>
-                <Card.Body>
+            <Accordion.Body style={{ height: "28rem" }}>
                   <ReactECharts style={{ height: "100%" }} option={option2} />
-                </Card.Body>
-              </Card>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
