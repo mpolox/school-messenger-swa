@@ -2,7 +2,16 @@ import React from 'react'
 import ReactECharts from "echarts-for-react";
 
 
-export const GraficaLinea = ({parciales}) => {
+export const GraficaLinea = ({cals, promedio}) => {
+
+  const verde = "#36AE7C";
+  const amarillo = "#F9D923";
+  const rojo = "#EB5353"
+  let colorPunto = verde;
+  if (promedio < 70) colorPunto = amarillo;
+  if (promedio < 50) colorPunto = rojo;
+
+  console.log("C", cals);
   const option = {
     tooltip: {
       trigger: "item",
@@ -18,17 +27,17 @@ export const GraficaLinea = ({parciales}) => {
       {
         symbol: "circle",
         symbolSize: 20,
-        color: "#146356",
+        color: colorPunto,
         name: "Calificación:",
-        data: [25, 25, 20, 25],
+        data: cals,
         type: "line",
         smooth: true,
         lineStyle: {
-          color: "#446A46",
+          color: colorPunto,
           width: 5,
         },
         areaStyle: {
-          color: "#14C38E",
+          color: colorPunto,
         },
       },
     ],
