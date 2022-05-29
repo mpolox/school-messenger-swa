@@ -5,13 +5,11 @@ import ReactECharts from "echarts-for-react";
 export const GraficaLinea = ({cals, promedio}) => {
 
   const verde = "#36AE7C";
-  const amarillo = "#F9D923";
+  const amarillo = "#EBA83A";
   const rojo = "#EB5353"
   let colorPunto = verde;
   if (promedio < 70) colorPunto = amarillo;
   if (promedio < 50) colorPunto = rojo;
-
-  console.log("C", cals);
   const option = {
     tooltip: {
       trigger: "item",
