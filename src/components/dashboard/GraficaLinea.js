@@ -3,9 +3,6 @@ import ReactECharts from "echarts-for-react";
 
 
 export const GraficaLinea = ({parciales}) => {
-  console.log("Parciales", parciales);
-
-
   const option = {
     tooltip: {
       trigger: "item",
@@ -39,7 +36,7 @@ export const GraficaLinea = ({parciales}) => {
 
   return (
     <>
-      <ReactECharts style={{ height: "100%" }} option={option} />
+      <ReactECharts style={{ height: "80%" }} option={option} />
     </>    
   )
 }
