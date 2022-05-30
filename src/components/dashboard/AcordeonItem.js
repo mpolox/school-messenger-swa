@@ -6,10 +6,12 @@ export const AcordeonItem = ({data}) => {
 
   const parciales = data.parciales;
   let promedio = 0;
+  let faltas = 0;
   let cals = []
-  const getPrice = parciales.map(item => {
+  parciales.map(item => {
     cals.push(item.calificacion);
     promedio = promedio + item.calificacion;
+    faltas += item.ausencias;
   });
   promedio = promedio / 4;
   let variante= "success";
@@ -18,14 +20,14 @@ export const AcordeonItem = ({data}) => {
   return (
     <Accordion.Item eventKey={data.id}>
       <Accordion.Header>{data.nombre}</Accordion.Header>
-      <Accordion.Body style={{ height: "35rem" }}>
+      <Accordion.Body style={{ height: "40rem" }}>
         <ListGroup>
           <ListGroup.Item>Materia: {data.nombre}</ListGroup.Item>
-          <ListGroup.Item>Creditos: {data.creditos}</ListGroup.Item>
-          <ListGroup.Item>Maestro: {data.nombreMaestro}</ListGroup.Item>
+          <ListGroup.Item>Maestro: {data.nombreMaestro}</ListGroup.Item>      
           <ListGroup.Item>Parciales: {data.parciales.length}</ListGroup.Item>
+          <ListGroup.Item>Creditos: {data.creditos}</ListGroup.Item>
+          <ListGroup.Item>Faltas: {faltas}</ListGroup.Item>
           <ListGroup.Item variant={variante}>Promedio: {promedio}</ListGroup.Item>
-
         </ListGroup>
         <GraficaLinea cals={cals} promedio={promedio}/>
         <br/>
