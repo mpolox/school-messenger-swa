@@ -6,17 +6,18 @@ export const Dona = ({ data }) => {
   const materias = data.materias;
   let promedios = [];
 
-  materias.map(item => {
+  materias.forEach(item => {
     let promedio = 0;    
     const parciales = item.parciales;
     const numParciales = parciales.length;
-    parciales.map(p => {
+    parciales.forEach(p => {
       promedio += p.calificacion;
     });
     promedio = promedio / numParciales;
-    let materiaPromedio = new Object();
-    materiaPromedio.value = promedio;
-    materiaPromedio.name = item.nombre;
+    let materiaPromedio = {
+      value: promedio,
+      name: item.nombre
+    }
     promedios.push(materiaPromedio);
   });
 

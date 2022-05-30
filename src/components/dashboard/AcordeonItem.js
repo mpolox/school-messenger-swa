@@ -8,7 +8,7 @@ export const AcordeonItem = ({data}) => {
   let promedio = 0;
   let faltas = 0;
   let cals = []
-  parciales.map(item => {
+  parciales.forEach(item => {
     cals.push(item.calificacion);
     promedio = promedio + item.calificacion;
     faltas += item.ausencias;

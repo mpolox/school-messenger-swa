@@ -1,6 +1,5 @@
 import React  from "react";
 import { Accordion, Card, Container } from "react-bootstrap";
-import ReactECharts from "echarts-for-react";
 
 export const StudentScreen = () => {
   return (
