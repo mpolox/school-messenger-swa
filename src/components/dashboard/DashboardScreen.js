@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Container,
-  Spinner,
-} from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import "../../Styles/App.css";
 import { Acordeon } from "./Acordeon";
 import { Dona } from "./Dona";
@@ -11,9 +8,10 @@ import { Resumen } from "./Resumen";
 export const DashboardScreen = () => {
   const [data, setData] = useState("");
   const getDashboardData = async () => {
-    const url = "https://eu2apisisdev01.azurewebsites.net/api/operation/GetResumen";
+    const url =
+      "https://eu2apisisdev01.azurewebsites.net/api/operation/GetResumen";
     const response = await fetch(url);
-    const resp = await response.json();;
+    const resp = await response.json();
     setData(resp.data);
   };
 
