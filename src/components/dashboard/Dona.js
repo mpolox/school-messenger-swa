@@ -26,9 +26,6 @@ export const Dona = ({ data }) => {
     tooltip: {
       trigger: "item",
     },
-    legend: {
-      bottom: "5%",
-    },
     series: [
       {
         name: "Promedio:",
