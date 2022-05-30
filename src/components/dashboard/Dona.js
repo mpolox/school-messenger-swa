@@ -6,18 +6,18 @@ export const Dona = ({ data }) => {
   const materias = data.materias;
   let promedios = [];
 
-  materias.forEach(item => {
-    let promedio = 0;    
+  materias.forEach((item) => {
+    let promedio = 0;
     const parciales = item.parciales;
     const numParciales = parciales.length;
-    parciales.forEach(p => {
+    parciales.forEach((p) => {
       promedio += p.calificacion;
     });
     promedio = promedio / numParciales;
     let materiaPromedio = {
       value: promedio,
-      name: item.nombre
-    }
+      name: item.nombre,
+    };
     promedios.push(materiaPromedio);
   });
 
@@ -31,9 +31,9 @@ export const Dona = ({ data }) => {
     },
     series: [
       {
-        name: "Materia:",
+        name: "Promedio:",
         type: "pie",
-        radius: ["40%", "70%"],
+        radius: ["35%", "70%"],
         avoidLabelOverlap: false,
 
         label: {
@@ -51,15 +51,29 @@ export const Dona = ({ data }) => {
           show: false,
         },
         data: promedios,
+        itemStyle: {
+          normal: {
+            label: {
+              show: true,
+              position: "inner",
+              formatter: function (params) {
+                return params.value;
+              },
+            },
+            labelLine: {
+              show: false,
+            },
+          },
+        },
       },
     ],
   };
 
   return (
     <>
-    <br/>
+      <br />
       <Card style={{ height: "28rem" }}>
-      <Card.Header>Calificaciones por materia</Card.Header>
+        <Card.Header>Calificaciones por materia</Card.Header>
         <Card.Body>
           <ReactECharts style={{ height: "100%" }} option={option} />
         </Card.Body>
