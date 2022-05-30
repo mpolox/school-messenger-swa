@@ -40,7 +40,7 @@ export const Dona = ({ data }) => {
         emphasis: {
           label: {
             show: true,
-            fontSize: "40",
+            fontSize: "35",
             fontWeight: "bold",
           },
         },
