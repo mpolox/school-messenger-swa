@@ -1,4 +1,5 @@
 export const ACTIONS = {
-  INCREMENT:"increment",
-  DECREMENT:"decrement"
+  INCREMENT: { type: "increment" },
+  DECREMENT: { type: "decrement" },
+  OTRO: { type: "otro" },
 };
