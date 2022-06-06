@@ -20,7 +20,7 @@ const [usuario, setUsuario] = useState({
   const ShowThealert = () => {
     if (showAlert)
     return(
-      <Alert variant='danger' >
+      <Alert variant='danger'onClose={() => setShowAlert(false)} dismissible>
       Contraseña incorrecta, intentelo nuevamente.
       </Alert>
     )
@@ -79,7 +79,7 @@ const [usuario, setUsuario] = useState({
           <Form.Label>contraseña</Form.Label>
           <Form.Control type="password" placeholder="Contraseña" name="password" onChange={handleOnChange}/>
         </Form.Group>
-        <Button variant="primary w-100" type="submit">
+        <Button variant="outline-success w-100" type="submit">
           Entrar
         </Button>
         <br/>       
