@@ -1,92 +1,116 @@
-import  axios from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
-import { Alert, Button, Card, Form } from "react-bootstrap";
+import { Alert, Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export const LoginScreen = () => {
-  
-const [access, setAccess] = useState({
-  loggedIn: false,
-  token: null
-});
+  const [access, setAccess] = useState({
+    loggedIn: false,
+    token: null,
+  });
 
-const [showAlert, setShowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [showConnecting, setShowConnecting] = useState(false);
 
-const [usuario, setUsuario] = useState({
-  userName: null,
-  password: null,
-});
+  const [usuario, setUsuario] = useState({
+    userName: null,
+    password: null,
+  });
 
   const ShowThealert = () => {
     if (showAlert)
-    return(
-      <Alert variant='danger'onClose={() => setShowAlert(false)} dismissible>
-      Contraseña incorrecta, intentelo nuevamente.
-      </Alert>
-    )
-  }
+      return (
+        <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible>
+          Contraseña incorrecta, intentelo nuevamente.
+        </Alert>
+      );
+  };
 
-  useEffect(() => {
-  },[access.loggedIn]); 
+  const ShowConnecting = () => {
+    if (showConnecting)
+      return (
+        <Alert variant="warning">
+          <Row className="text-center">
+            <Col><Spinner animation="border"/></Col>
+
+          </Row>
+        </Alert>
+      );
+  };
+
+  useEffect(() => {}, [access.loggedIn]);
 
   const navigate = useNavigate();
 
   const handleOnChange = (e) => {
-    setUsuario({...usuario, [e.target.name]: e.target.value })
-  }
+    setUsuario({ ...usuario, [e.target.name]: e.target.value });
+  };
 
   const handleLogin = (e) => {
+    setShowConnecting(true);
+    setShowAlert(false);
     e.preventDefault();
-    axios.post('https://eu2apisisdev01.azurewebsites.net/api/user/Login',{
-      userName: usuario.userName,
-      password: usuario.password
-    })
-    .then(function (response) {
-      setShowAlert(false);
-      setAccess({
-        loggedIn: true,
-        token: response.data        
+    axios
+      .post("https://eu2apisisdev01.azurewebsites.net/api/user/Login", {
+        userName: usuario.userName,
+        password: usuario.password,
+      })
+      .then(function (response) {
+        setShowConnecting(false);
+        setAccess({
+          loggedIn: true,
+          token: response.data,
+        });
+        navigate("/", { replace: true });
+      })
+      .catch(function (error) {
+        setShowConnecting(false);
+        setShowAlert(true);
+        setAccess({
+          loggedIn: false,
+          token: null,
+        });
       });
-      navigate("/", { replace: true });
-    })
-    .catch(function (error) {
-      setShowAlert(true);
-      setAccess({
-        loggedIn: false,
-        token: null
-      });
-    });    
   };
- 
+
   return (
-  <div className="home">
-  <Card border="success" style={{ width: '20rem' }}>
-    <ShowThealert></ShowThealert>
-
-
-    <Card.Header>Mi Ateneo</Card.Header>
-    <Card.Body>
-      <Card.Title>Acceso</Card.Title>
-      <Card.Text>
-        Hola, para poder entrar es necesario tu nombre de usuario y contraseña.
-      </Card.Text>
-      <Form variant="w-50" onSubmit={handleLogin}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Usuario</Form.Label>
-          <Form.Control type="user" placeholder="Nombre de usuario" name="userName" onChange={handleOnChange} />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>contraseña</Form.Label>
-          <Form.Control type="password" placeholder="Contraseña" name="password" onChange={handleOnChange}/>
-        </Form.Group>
-        <Button variant="outline-success w-100" type="submit">
-          Entrar
-        </Button>
-        <br/>       
-      </Form>      
-    </Card.Body>
-  </Card>
-
+    <div className="home">
+      <Card border="success">
+        <Card.Header>Access</Card.Header>
+        <ShowThealert></ShowThealert>
+        <ShowConnecting></ShowConnecting>        
+        <Card.Body>
+          <Card.Title>Acceso</Card.Title>
+          <Card.Text>
+            Hola, para poder entrar es necesario tu nombre de usuario y
+            contraseña.
+          </Card.Text>
+          <Form onSubmit={handleLogin}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label >Usuario</Form.Label>
+              <Form.Control
+                type="user"
+                placeholder="Nombre de usuario"
+                name="userName"
+                onChange={handleOnChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword" >
+              <Form.Label>contraseña</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Contraseña"
+                name="password"
+                onChange={handleOnChange}
+              />
+            </Form.Group>
+            <Button variant="success w-100" type="submit">
+              Entrar
+            </Button>
+            <br />
+          </Form>
+        </Card.Body>
+      </Card>
     </div>
   );
 };
