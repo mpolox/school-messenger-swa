@@ -37,7 +37,7 @@ const [usuario, setUsuario] = useState({
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const {data} = axios.post('https://eu2apisisdev01.azurewebsites.net/api/user/Login',{
+    axios.post('https://eu2apisisdev01.azurewebsites.net/api/user/Login',{
       userName: usuario.userName,
       password: usuario.password
     })
@@ -60,7 +60,7 @@ const [usuario, setUsuario] = useState({
  
   return (
   <div className="home">
-  <Card border="primary" style={{ width: '20rem' }}>
+  <Card border="success" style={{ width: '20rem' }}>
     <ShowThealert></ShowThealert>
 
 
