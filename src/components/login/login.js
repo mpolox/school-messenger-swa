@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Alert, Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "../../Styles/App.css";
+import logo from '../../assets/af.jpg'
 
 export const LoginScreen = () => {
   const [access, setAccess] = useState({
@@ -75,8 +77,9 @@ export const LoginScreen = () => {
 
   return (
     <div className="home">
-      <Card border="success">
-        <Card.Header>Access</Card.Header>
+      <Card border="success" className="loginCard">
+        {/* <Card.Img variant="top" src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" /> */}
+        <Card.Img variant="top" src={logo} /> 
         <ShowThealert></ShowThealert>
         <ShowConnecting></ShowConnecting>        
         <Card.Body>
