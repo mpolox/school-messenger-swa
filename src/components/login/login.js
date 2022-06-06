@@ -13,8 +13,8 @@ const [access, setAccess] = useState({
 const [showAlert, setShowAlert] = useState(false);
 
 const [usuario, setUsuario] = useState({
-  userName: '',
-  password: '',
+  userName: null,
+  password: null,
 });
 
   const ShowThealert = () => {
@@ -27,7 +27,6 @@ const [usuario, setUsuario] = useState({
   }
 
   useEffect(() => {
-    console.log("a---->", {access});
   },[access.loggedIn]); 
 
   const navigate = useNavigate();
@@ -65,7 +64,7 @@ const [usuario, setUsuario] = useState({
     <ShowThealert></ShowThealert>
 
 
-    <Card.Header>Mi Ateneo: {access.loggedIn} user: {usuario.userName}</Card.Header>
+    <Card.Header>Mi Ateneo</Card.Header>
     <Card.Body>
       <Card.Title>Acceso</Card.Title>
       <Card.Text>
