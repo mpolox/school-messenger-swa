@@ -45,7 +45,7 @@ export const Sidebar = () => {
         </NavLink>
       </div>
       <div>
-        <NavLink className="link-closed" to="/login">
+        <NavLink className="link-closed" to="/">
           <FaPowerOff />
         </NavLink>
       </div>

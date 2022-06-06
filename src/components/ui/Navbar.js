@@ -6,7 +6,7 @@ export const NavbarMenu = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate("/login", {
+    navigate("/", {
       replace: true,
     });
   };
@@ -18,7 +18,7 @@ export const NavbarMenu = () => {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav>
-            <Nav.Link eventKey="1" as={Link} to="/">
+            <Nav.Link eventKey="1" as={Link} to="/dashboard">
               Inicio
             </Nav.Link>
             <Nav.Link eventKey="2" as={Link} to="/student">
@@ -32,7 +32,6 @@ export const NavbarMenu = () => {
             </Nav.Link>
             <Nav.Link
               className="nav-item nav-link"
-              to="/login"
               onClick={handleLogout}>
               Salir
             </Nav.Link>

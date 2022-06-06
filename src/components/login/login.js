@@ -63,7 +63,7 @@ export const LoginScreen = () => {
           loggedIn: true,
           token: response.data,
         });
-        navigate("/", { replace: true });
+        navigate("/dashboard", { replace: true });
       })
       .catch(function (error) {
         setShowConnecting(false);
