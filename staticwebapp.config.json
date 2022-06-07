@@ -1,8 +1,6 @@
 {
-  "responseOverrides": {
-    "404": {
-      "rewrite": "/404.html",
-      "statusCode": 404
-    }
-  }  
+  "navigationFallback": {
+    "rewrite" : "/index.html",
+    "exclude" : ["*.{css.png,jpg,gif}"]
+  }
 }
