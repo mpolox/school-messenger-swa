@@ -99,7 +99,7 @@ export const LoginScreen = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword" >
-              <Form.Label>contraseña</Form.Label>
+              <Form.Label>Contraseña</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Contraseña"
@@ -107,9 +107,7 @@ export const LoginScreen = () => {
                 onChange={handleOnChange}
               />
             </Form.Group>
-            <Button variant="success w-100" type="submit">
-              Entrar
-            </Button>
+            <Button variant="success w-100" type="submit">Entrar</Button>
             <br />
           </Form>
         </Card.Body>
