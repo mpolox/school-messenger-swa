@@ -1,6 +1,5 @@
 import React from 'react'
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { NotFound404 } from '../components/404/NotFound404';
 import { LoginScreen } from '../components/login/login';
 import { DashboardRoutes } from './DashboardRoutes';
 
