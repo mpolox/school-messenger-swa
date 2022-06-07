@@ -10,7 +10,6 @@ export const AppRouter = () => {
       <Routes>
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/" element={<LoginScreen />} />
-        <Route path="/404.html" element={<NotFound404/>} />
         <Route path="/*" element={<DashboardRoutes />} />
       </Routes>
       <br/>
