@@ -43,6 +43,18 @@
   justify-content: center;
 }
 
+.studentHome {
+  border-top: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.studentCard {
+  width: 100%;  
+}
+
 .loginCard {  
   width: 20rem;  
 }

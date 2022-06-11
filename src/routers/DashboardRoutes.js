@@ -1,22 +1,29 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import { DashboardScreen } from '../components/dashboard/DashboardScreen'
-import { LoginScreen } from '../components/login/login'
 import { SearchScreen } from '../components/search/SearchScreen'
 import { StudentScreen } from '../components/students/StudentScreen'
 import { TeacherScreen } from '../components/teachers/TeacherScreen'
 import { NavbarMenu } from '../components/ui/Navbar'
 
-export const DashboardRoutes = () => {
+export const DashboardRoutes = ({currentUser}) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentUser === null) {
+      navigate("/login", { replace: true });
+    }
+  }, []);
+
   return (
     <>
       {/* <Sidebar /> */}
       <NavbarMenu/>      
       <Routes>
-        <Route path="teacher" element={<TeacherScreen />} />
-        <Route path="student" element={<StudentScreen />} />
-        <Route path="search" element={<SearchScreen />} />
-        <Route path="dashboard" element={<DashboardScreen />} />
+        <Route path="teacher" element={<TeacherScreen currentUser={currentUser}/>} />
+        <Route path="student" element={<StudentScreen currentUser={currentUser}/>} />
+        <Route path="search" element={<SearchScreen currentUser={currentUser}/>} />
+        <Route path="dashboard" element={<DashboardScreen currentUser={currentUser}/>} />
       </Routes>       
     </>
   )

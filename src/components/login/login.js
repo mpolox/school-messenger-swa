@@ -3,21 +3,59 @@ import { useEffect, useState } from "react";
 import { Alert, Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../../Styles/App.css";
-import logo from '../../assets/af.jpg'
+import logo from "../../assets/af.jpg";
+import { ROLES } from "../../constants/roles";
+import { PAGE } from "../../constants/pages";
 
-export const LoginScreen = () => {
-  const [access, setAccess] = useState({
-    loggedIn: false,
-    token: null,
-  });
-
+export const LoginScreen = ({ setCurrentUser }) => {
+  const navigate = useNavigate();
   const [showAlert, setShowAlert] = useState(false);
   const [showConnecting, setShowConnecting] = useState(false);
-
   const [usuario, setUsuario] = useState({
     userName: null,
     password: null,
   });
+
+  const processRequesting = (e) => {
+    e.preventDefault();
+    e.target.reset();
+    setShowConnecting(true);
+    setShowAlert(false);
+  };
+
+  const processAccess = ({ token, user }) => {
+    setShowConnecting(false);
+    setCurrentUser({
+      token: token,
+      email: user.email,
+      firstName: user.firstName,
+      parentName: user.parentName,
+      role: user.role,
+      userName: user.userName,
+    });
+
+    switch (user.role) {
+      case ROLES.ADMIN:
+        navigate(PAGE.ADMIN, { replace: true });
+        break;
+      case ROLES.STUDENT:
+        navigate(PAGE.STUDENT, { replace: true });
+        break;
+      case ROLES.PARENT:
+        navigate(PAGE.PARENT, { replace: true });
+        break;
+      case ROLES.TEACHER:
+        navigate(PAGE.TEACHER, { replace: true });
+        break;
+      default:
+        navigate("/", { replace: true });
+    }
+  };
+
+  const processError = () => {
+    setShowConnecting(false);
+    setShowAlert(true);
+  };
 
   const ShowThealert = () => {
     if (showAlert)
@@ -33,45 +71,30 @@ export const LoginScreen = () => {
       return (
         <Alert variant="warning">
           <Row className="text-center">
-            <Col><Spinner animation="border"/></Col>
-
+            <Col>
+              <Spinner animation="border" />
+            </Col>
           </Row>
         </Alert>
       );
   };
-
-  useEffect(() => {}, [access.loggedIn]);
-
-  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
     setUsuario({ ...usuario, [e.target.name]: e.target.value });
   };
 
   const handleLogin = (e) => {
-    setShowConnecting(true);
-    setShowAlert(false);
-    e.preventDefault();
+    processRequesting(e);
     axios
       .post("https://eu2apisisdev01.azurewebsites.net/api/user/Login", {
         userName: usuario.userName,
         password: usuario.password,
       })
-      .then(function (response) {
-        setShowConnecting(false);
-        setAccess({
-          loggedIn: true,
-          token: response.data,
-        });
-        navigate("/dashboard", { replace: true });
+      .then(function ({ data }) {
+        processAccess(data);
       })
       .catch(function (error) {
-        setShowConnecting(false);
-        setShowAlert(true);
-        setAccess({
-          loggedIn: false,
-          token: null,
-        });
+        processError();
       });
   };
 
@@ -79,18 +102,18 @@ export const LoginScreen = () => {
     <div className="home">
       <Card border="success" className="loginCard">
         {/* <Card.Img variant="top" src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" /> */}
-        <Card.Img variant="top" src={logo} /> 
+        <Card.Img variant="top" src={logo} />
         <ShowThealert></ShowThealert>
-        <ShowConnecting></ShowConnecting>        
+        <ShowConnecting></ShowConnecting>
         <Card.Body>
           <Card.Title>Acceso</Card.Title>
           <Card.Text>
             Hola, para poder entrar es necesario tu nombre de usuario y
             contraseña.
           </Card.Text>
-          <Form onSubmit={handleLogin}>
+          <Form onSubmit={handleLogin} id="loginForm">
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label >Usuario</Form.Label>
+              <Form.Label>Usuario</Form.Label>
               <Form.Control
                 type="user"
                 placeholder="Nombre de usuario"
@@ -98,16 +121,18 @@ export const LoginScreen = () => {
                 onChange={handleOnChange}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword" >
+            <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Contraseña</Form.Label>
               <Form.Control
-                type="password"
+                // type="password"
                 placeholder="Contraseña"
                 name="password"
                 onChange={handleOnChange}
               />
             </Form.Group>
-            <Button variant="success w-100" type="submit">Entrar</Button>
+            <Button variant="success w-100" type="submit">
+              Entrar
+            </Button>
             <br />
           </Form>
         </Card.Body>

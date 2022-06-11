@@ -5,7 +5,7 @@ import { Acordeon } from "./Acordeon";
 import { Dona } from "./Dona";
 import { Resumen } from "./Resumen";
 
-export const DashboardScreen = () => {
+export const DashboardScreen = ({currentUser}) => {
   const [data, setData] = useState("");
   const getDashboardData = async () => {
     const url =
