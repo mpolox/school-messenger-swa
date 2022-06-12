@@ -72,7 +72,7 @@ export const StudentScreen = ({ currentUser }) => {
     return (
       <>
         <br />
-        <Card bg="warning">
+        <Card>
           <Card.Header className="text-center" variant="warning">Notificaciones de tus maestros</Card.Header>
           <Card.Body>
             <LoadNews></LoadNews>
