@@ -46,6 +46,8 @@ export const StudentScreen = ({ currentUser }) => {
   const StudentResume = () => {
     if (currentUser !== null) {
       return (
+<>
+<br />
         <div className="studentHome">
           <Card className="studentCard">
             <Card.Header className="text-center">Featured</Card.Header>
@@ -61,6 +63,7 @@ export const StudentScreen = ({ currentUser }) => {
             </Card.Body>
           </Card>
         </div>
+</>
       );
     }
   };
