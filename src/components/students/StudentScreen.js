@@ -1,5 +1,12 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { Card, Container, ListGroup, Spinner, Table } from "react-bootstrap";
+import {
+  Alert,
+  Card,
+  Container,
+  ListGroup,
+  Spinner,
+  Table,
+} from "react-bootstrap";
 import { ACTIONS } from "../../Reducers/actions";
 import { StudentReducer } from "../../Reducers/StudentReducer";
 import { InitialStudentState } from "../../Reducers/InitialStudentState";
@@ -26,35 +33,42 @@ export const StudentScreen = ({ currentUser }) => {
     console.log("DATA", data);
     if (data) {
       return (
-        <Card.Text className="text-bold">
-          <ListGroup as="ol" numbered>
-            <ListGroup.Item as="li" variant="warning">
-              Cras justo odio Cras justo odio Cras justo odio Cras justo odio
-              CraCras justo odio Cras justo odio Cras justo odio Cras justo odio
-              Crs justo odioCras justo odio
-            </ListGroup.Item>
-            <ListGroup.Item as="li" variant="warning">
-              Dapibus ac facilisis Dapibus ac facilisis Dapibus ac facilisis
-              DapiDapibus ac facilisis Dapibus ac facilisis Dapibus ac facilisis
-              Dapbus ac facilisis Dapibus ac facilisisDapibus ac facilisis in
-            </ListGroup.Item>
-            <ListGroup.Item as="li" variant="warning">
-              Morbi leo risus Morbi leo risus Morbi leo risus Morbi leo risus
-              MorMorbi leo risus Morbi leo risus Morbi leo risus Morbi leo risus
-              Mobi leo risusMorbi leo risus
-            </ListGroup.Item>
-            <ListGroup.Item as="li" variant="warning">
-              Porta ac consectetur Porta ac consectetur Porta ac consectetur
-              PortPorta ac consectetur Porta ac consectetur Porta ac consectetur
-              Pora ac consectetur Porta ac consecteturPorta ac consectetur ac
-            </ListGroup.Item>
-            <ListGroup.Item as="li" variant="warning">
-              Vestibulum at eros Vestibulum at eros Vestibulum at eros
-              VestibulumVestibulum at eros Vestibulum at eros Vestibulum at eros
-              Vestibulu at eros Vestibulum at erosVestibulum at eros
-            </ListGroup.Item>
-          </ListGroup>
-        </Card.Text>
+        <>
+          <Alert variant="success" >
+            <Alert.Heading>Ultimo parcial acreditado</Alert.Heading>
+            <p>
+              Aquí va la notifiación Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. In lobortis condimentum orci, volutpat congue
+              diam aliquam ac. Donec placerat elementum viverra. Nunc elementum
+              nisi dapibus magna pretium finibus. Nam accumsan metus vel
+              suscipit molestie. Morbi dapibus metus nunc, non aliquet tortor
+              dictum sed. Nam pharetra n
+            </p>
+          </Alert>
+          <Alert variant="warning">
+            <Alert.Heading>Bajo promedio en X materia</Alert.Heading>
+            <p>
+              Aquí va la notifiación Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. In lobortis condaccumsan metus vel
+              suscipit molestie. Morbi dapibus metus nunc, non aliquet tortor
+              dictum sed. Nam pharetra n
+            </p>
+          </Alert>
+          <Alert variant="danger">
+            <Alert.Heading>Extraordinario en Artes</Alert.Heading>
+            <p>
+              Aquí va la notifiación Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. In lobortis condaccumsa elementum viverra. Nunc elementum
+              nisi dapibus magna pretium finibus. Nam accumsan metus vel
+              suscipit molestie. Morbi dapibus metus nunc, non aliquet tortor
+              dictum sed. Nam pharetra n
+            </p>
+            <hr />
+            <p className="mb-0">
+              Ultimo dia para presentar el Extraordinario es el s$#%"#$%#$
+            </p>
+          </Alert>
+        </>
       );
     }
     return (
