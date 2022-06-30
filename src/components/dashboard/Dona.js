@@ -30,7 +30,7 @@ export const Dona = ({ data }) => {
       {
         name: "Promedio:",
         type: "pie",
-        radius: ["35%", "70%"],
+        radius: ["45%", "70%"],
         avoidLabelOverlap: false,
 
         label: {
@@ -49,6 +49,9 @@ export const Dona = ({ data }) => {
         },
         data: promedios,
         itemStyle: {
+          borderRadius: 10,
+          borderColor: '#fff',
+          borderWidth: 2,         
           normal: {
             label: {
               show: true,
@@ -60,7 +63,7 @@ export const Dona = ({ data }) => {
             labelLine: {
               show: false,
             },
-          },
+          }
         },
       },
     ],

@@ -83,19 +83,22 @@ export const LoginScreen = ({ setCurrentUser }) => {
     setUsuario({ ...usuario, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = (e) => {
-    processRequesting(e);
-    axios
-      .post("https://eu2apisisdev01.azurewebsites.net/api/user/Login", {
+  const getData = async () => {
+    try {
+        const rest = await axios.post("https://eu2apisisdev01.azurewebsites.net/api/user/Login", {
         userName: usuario.userName,
         password: usuario.password,
-      })
-      .then(function ({ data }) {
-        processAccess(data);
-      })
-      .catch(function (error) {
-        processError();
       });
+      const data = rest.data;
+      processAccess(data);
+    } catch (error) {
+      processError();
+    }
+  }
+
+  const handleLogin = (e) => {
+    processRequesting(e);
+    getData();
   };
 
   return (

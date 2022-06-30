@@ -1,20 +1,14 @@
-import React, { useEffect, useReducer, useState } from "react";
-import {
-  Alert,
-  Card,
-  Container,
-  ListGroup,
-  Spinner,
-  Table,
-} from "react-bootstrap";
-import { ACTIONS } from "../../Reducers/actions";
-import { StudentReducer } from "../../Reducers/StudentReducer";
-import { InitialStudentState } from "../../Reducers/InitialStudentState";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Alert, Card, Container, Spinner, Table } from "react-bootstrap";
+// import { ACTIONS } from "../../Reducers/actions";
+// import { StudentReducer } from "../../Reducers/StudentReducer";
+// import { InitialStudentState } from "../../Reducers/InitialStudentState";
+// import { useNavigate } from "react-router-dom";
 import ReactECharts from "echarts-for-react";
 
 export const StudentScreen = ({ currentUser }) => {
-  const [state, dispatch] = useReducer(StudentReducer, InitialStudentState);
+  // const [state, dispatch] = useReducer(StudentReducer, InitialStudentState);
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -24,17 +18,17 @@ export const StudentScreen = ({ currentUser }) => {
   const getDashboardData = async () => {
     const url =
       "https://eu2apisisdev01.azurewebsites.net/api/operation/GetResumen";
-    const response = await fetch(url);
-    const resp = await response.json();
+    const response = await axios.get(url);
+    // const response = await fetch(url);
+    const resp = response.data;
     setData(resp.data);
   };
 
   const LoadNews = () => {
-    console.log("DATA", data);
     if (data) {
       return (
-        <>
-          <Alert variant="success" >
+        <div>
+          <Alert variant="success">
             <Alert.Heading>Ultimo parcial acreditado</Alert.Heading>
             <p>
               Aquí va la notifiación Lorem ipsum dolor sit amet, consectetur
@@ -49,32 +43,29 @@ export const StudentScreen = ({ currentUser }) => {
             <Alert.Heading>Bajo promedio en X materia</Alert.Heading>
             <p>
               Aquí va la notifiación Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. In lobortis condaccumsan metus vel
-              suscipit molestie. Morbi dapibus metus nunc, non aliquet tortor
-              dictum sed. Nam pharetra n
+              adipiscing elit. In lobortis condaccumsan metus vel suscipit
+              molestie. Morbi dapibus metus nunc, non aliquet tortor dictum sed.
+              Nam pharetra n
             </p>
           </Alert>
           <Alert variant="danger">
             <Alert.Heading>Extraordinario en Artes</Alert.Heading>
             <p>
               Aquí va la notifiación Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. In lobortis condaccumsa elementum viverra. Nunc elementum
-              nisi dapibus magna pretium finibus. Nam accumsan metus vel
-              suscipit molestie. Morbi dapibus metus nunc, non aliquet tortor
-              dictum sed. Nam pharetra n
+              adipiscing elit. In lobortis condaccumsa elementum viverra. Nunc
+              elementum nisi dapibus magna pretium finibus. Nam accumsan metus
+              vel suscipit molestie. Morbi dapibus metus nunc, non aliquet
+              tortor dictum sed. Nam pharetra n
             </p>
             <hr />
-            <p className="mb-0">
-              Ultimo dia para presentar el Extraordinario es el s$#%"#$%#$
-            </p>
           </Alert>
-        </>
+        </div>
       );
     }
     return (
-      <Card.Text className="text-center">
+      <div className="text-center">
         <Spinner animation="border" />
-      </Card.Text>
+      </div>
     );
   };
 
@@ -160,6 +151,12 @@ export const StudentScreen = ({ currentUser }) => {
 
   const StundetChart = () => {
     const option = {
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "shadow",
+        },
+      },
       yAxis: {
         type: "category",
         data: ["Mate 2", "TLR", "Inglés", "Artes", "Taller"],

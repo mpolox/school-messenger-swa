@@ -8,8 +8,7 @@ import { Resumen } from "./Resumen";
 export const DashboardScreen = ({currentUser}) => {
   const [data, setData] = useState("");
   const getDashboardData = async () => {
-    const url =
-      "https://eu2apisisdev01.azurewebsites.net/api/operation/GetResumen";
+    const url = "https://eu2apisisdev01.azurewebsites.net/api/operation/GetResumen";
     const response = await fetch(url);
     const resp = await response.json();
     setData(resp.data);
